@@ -32,14 +32,12 @@ export default function ReservationForm() {
 
   const today = new Date().toISOString().split('T')[0];
 
-  // Gün bazlı rezervasyon kontrolü
+ 
   useEffect(() => {
     if (formData.date && formData.guests) {
       checkAvailability();
     }
   }, [formData.date, formData.guests]);
-
-
 
   const checkAvailability = async () => {
     setCheckingAvailability(true);
@@ -122,7 +120,6 @@ export default function ReservationForm() {
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Name */}
         <div>
           <label className="block text-gray-700 font-medium mb-2">
             Full Name *
@@ -137,8 +134,6 @@ export default function ReservationForm() {
             placeholder="John Doe"
           />
         </div>
-
-        {/* Email */}
         <div>
           <label className="block text-gray-700 font-medium mb-2">
             Email *
@@ -153,8 +148,6 @@ export default function ReservationForm() {
             placeholder="john@example.com"
           />
         </div>
-
-        {/* Phone */}
         <div>
           <label className="block text-gray-700 font-medium mb-2">
             Phone Number *
@@ -169,8 +162,6 @@ export default function ReservationForm() {
             placeholder="+1 234 567 8900"
           />
         </div>
-
-        {/* Date */}
         <div>
           <label className="block text-gray-700 font-medium mb-2">Date *</label>
           <input
@@ -184,8 +175,6 @@ export default function ReservationForm() {
           
           />
         </div>
-
-        {/* Time */}
         <div>
           <label className="block text-gray-700 font-medium mb-2">Time *</label>
           <select
@@ -201,8 +190,6 @@ export default function ReservationForm() {
             ))}
           </select>
         </div>
-
-        {/* Guests */}
         <div>
           <label className="block text-gray-700 font-medium mb-2">Number of Guests *</label>
           <select
@@ -217,14 +204,11 @@ export default function ReservationForm() {
             ))}
           </select>
         </div>
-
-        {/* Availability */}
         {checkingAvailability && (
           <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-700">
             Checking availability...
           </div>
         )}
-
         {availability && !checkingAvailability && (
           <div className={`p-4 rounded-lg ${
             availability.available ? 'bg-orange-50 border border-primary-500 text-primary-500' : 'bg-red-50 border border-red-200 text-red-700'
@@ -234,8 +218,6 @@ export default function ReservationForm() {
               : '✗ Sorry, no reservations left for this day.'}
           </div>
         )}
-
-        {/* Special Requests */}
         <div>
           <label className="block text-gray-700 font-medium mb-2">
             Special Requests (Optional)
@@ -249,8 +231,6 @@ export default function ReservationForm() {
             placeholder="Dietary restrictions, celebration, window seat preference..."
           />
         </div>
-
-        {/* Submit */}
         <button
           type="submit"
           disabled={submitting || !availability?.available}
@@ -258,8 +238,6 @@ export default function ReservationForm() {
         >
           {submitting ? 'Confirming...' : 'Confirm Reservation'}
         </button>
-
-        {/* Messages */}
         {message && <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">{message}</div>}
         {error && <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">{error}</div>}
       </form>

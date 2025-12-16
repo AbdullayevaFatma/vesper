@@ -1,16 +1,16 @@
-// lib/db.js
+
 import fs from 'fs';
 import path from 'path';
 
-// Data klasörünün yolu
+
 const dataDirectory = path.join(process.cwd(), 'app', 'data');
 
-// JSON dosyasını oku
+
 export function readData(filename) {
   try {
     const filePath = path.join(dataDirectory, filename);
     
-    // Dosya yoksa oluştur
+  
     if (!fs.existsSync(filePath)) {
       fs.writeFileSync(filePath, JSON.stringify([]));
       return [];
@@ -24,10 +24,9 @@ export function readData(filename) {
   }
 }
 
-// JSON dosyasına yaz
+
 export function writeData(filename, data) {
   try {
-    // data klasörü yoksa oluştur
     if (!fs.existsSync(dataDirectory)) {
       fs.mkdirSync(dataDirectory, { recursive: true });
     }
@@ -41,13 +40,11 @@ export function writeData(filename, data) {
   }
 }
 
-// Email formatını kontrol et
 export function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
-// Tarih formatını kontrol et (YYYY-MM-DD)
 export function isValidDate(dateString) {
   const regex = /^\d{4}-\d{2}-\d{2}$/;
   if (!regex.test(dateString)) return false;
@@ -56,7 +53,6 @@ export function isValidDate(dateString) {
   return date instanceof Date && !isNaN(date);
 }
 
-// Geçmiş tarih mi kontrol et
 export function isPastDate(dateString) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);

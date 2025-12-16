@@ -1,4 +1,3 @@
-// app/api/reservations/route.js
 import { NextResponse } from 'next/server';
 import { readData, writeData, isValidDate, isPastDate, isValidEmail } from '../../lib/db';
 
@@ -7,13 +6,11 @@ const RESTAURANT_CONFIG = {
   maxCapacityPerTable: 6,
 };
 
-// Create reservation (POST)
 export async function POST(request) {
   try {
     const body = await request.json();
     const { name, email, phone, date, guests, specialRequests } = body;
 
-    // Validation
     if (!name || !email || !phone || !date || !guests) {
       return NextResponse.json(
         { error: 'All fields are required (name, email, phone, date, guests)' },
@@ -38,10 +35,10 @@ export async function POST(request) {
       return NextResponse.json({ error: `Guests must be between 1 and ${RESTAURANT_CONFIG.maxCapacityPerTable}`, status: 400 });
     }
 
-    // Read existing reservations
+
     const reservations = readData('reservations.json');
 
-    // Gün bazlı rezervasyon sayısı
+
     const reservationsForDate = reservations.filter(
       res => res.date === date && res.status === 'confirmed'
     );
@@ -52,8 +49,6 @@ export async function POST(request) {
         { status: 409 }
       );
     }
-
-    // Table number ataması artık gün bazlı
     const newReservation = {
       id: Date.now().toString(),
       name,
@@ -85,7 +80,7 @@ export async function POST(request) {
   }
 }
 
-// Get all reservations (GET)
+
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);

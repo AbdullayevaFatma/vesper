@@ -1,4 +1,3 @@
-// app/api/reservations/availability/route.js
 import { NextResponse } from 'next/server';
 import { readData, isValidDate, isPastDate } from '../../../lib/db';
 
@@ -7,13 +6,11 @@ const RESTAURANT_CONFIG = {
   maxCapacityPerTable: 6,
 };
 
-// Check availability for a specific date (day-based)
 export async function POST(request) {
   try {
     const body = await request.json();
     const { date, guests } = body;
     
-    // Validation
     if (!date || !guests) {
       return NextResponse.json(
         { error: 'Date and number of guests are required' },
@@ -45,7 +42,6 @@ export async function POST(request) {
     
     const reservations = readData('reservations.json');
 
-    // Gün bazlı dolu rezervasyonları say
     const reservationsForDate = reservations.filter(
       res => res.date === date && res.status === 'confirmed'
     );
