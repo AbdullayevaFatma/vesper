@@ -16,7 +16,6 @@ export default function Navbar() {
           >
             VESPER
           </Link>
-          {/* Desktop */}
           <ul className="hidden md:flex items-center space-x-8 uppercase">
             <li>
               <Link
@@ -45,13 +44,12 @@ export default function Navbar() {
             <li>
               <Link
                 href="/reservations"
-                className="cursor-pointer border border-primary-500 px-4 py-1 rounded hover:bg-primary-500 hover:text-white transition duration-500"
+                className="cursor-pointer border border-primary-500 px-4 py-1 rounded hover:bg-primary-500  transition duration-500"
               >
                 Reservation
               </Link>
             </li>
           </ul>
-          {/* Hamburger */}
           {!open && (
             <button
               className="md:hidden text-3xl cursor-pointer z-50"
@@ -61,11 +59,9 @@ export default function Navbar() {
               ☰
             </button>
           )}
-
-          {/* Close - menü açıkken */}
           {open && (
             <button
-              className="md:hidden absolute top-6 right-6 text-4xl text-white z-50"
+              className="md:hidden absolute top-3 right-6 text-4xl text-white z-50"
               onClick={() => setOpen(false)}
               aria-label="Close menu"
             >
@@ -74,22 +70,14 @@ export default function Navbar() {
           )}
         </div>
       </nav>
-      {/* Mobile Menu */}
       <div
         className={`fixed inset-0 z-40 md:hidden
   flex flex-col justify-center items-center
-  bg-black/95 backdrop-blur-lg
+  bg-black/80 backdrop-blur-lg
   transition-all duration-500 ease-out
   ${open ? "opacity-100 visible" : "opacity-0 invisible"}
   `}
       >
-        {/* Close Button */}
-        <button
-          className="absolute top-6 right-6 text-white text-4xl"
-          onClick={() => setOpen(false)}
-        >
-          ✕
-        </button>
         <ul
           className={`flex flex-col space-y-8 text-center uppercase text-xl text-white
     transition-all duration-500 ease-out
@@ -130,7 +118,7 @@ export default function Navbar() {
             } delay-400`}
           >
             <Link
-              href="/reservation"
+              href="/reservations"
               className="border border-primary-500 px-6 py-2 rounded hover:bg-primary-500 transition"
               onClick={() => setOpen(false)}
             >

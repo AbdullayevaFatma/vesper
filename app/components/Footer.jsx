@@ -4,32 +4,27 @@ import { useEffect, useState } from "react";
 import { FaInstagram, FaFacebookF, FaTiktok } from "react-icons/fa";
 
 export default function Footer() {
-    const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState(""); 
   const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
     if (message) {
       const timer = setTimeout(() => {
         setMessage("");
-        setMessageType("");
       }, 2000);
       return () => clearTimeout(timer);
     }
   }, [message]);
 
-const handleSubscribe = async (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
     if (!email) {
       setMessage("Please enter your email.");
-      setMessageType("error");
       return;
     }
-
     setLoading(true);
     setMessage("");
-    setMessageType("");
 
     try {
       const res = await fetch("/api/newsletter", {
@@ -40,28 +35,24 @@ const handleSubscribe = async (e) => {
 
       let data = {};
       try {
-        data = await res.json(); // Backend JSON parse
+        data = await res.json();
       } catch (err) {
         console.error("Failed to parse JSON:", err);
       }
 
       if (!res.ok) {
         setMessage(data?.error || "Something went wrong. Try again.");
-        setMessageType("error");
       } else {
         setMessage(data.message || "Successfully subscribed!");
-        setMessageType("success");
-        setEmail(""); // inputu temizle
+        setEmail("");
       }
     } catch (error) {
       console.error("Fetch error:", error);
       setMessage("Something went wrong. Try again.");
-      setMessageType("error");
     }
 
     setLoading(false);
   };
-
 
   return (
     <footer className="bg-neutral-900 text-gray-200">
@@ -94,19 +85,26 @@ const handleSubscribe = async (e) => {
             Get the latest updates, promotions and events directly in your
             inbox.
           </p>
-          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md w-full">
+          <form
+            onSubmit={handleSubscribe}
+            className="flex flex-col sm:flex-row gap-4 max-w-md w-full"
+          >
             <input
               className="flex-1 px-4 py-3 rounded-md border border-gray-700 bg-neutral-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
               placeholder="Enter your email"
               type="email"
               value={email}
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <button type="submit" disabled={loading} className="px-6 py-3 bg-primary-500 text-white rounded-md cursor-pointer uppercase">
+            <button
+              type="submit"
+              disabled={loading}
+              className="px-6 py-3 bg-primary-500 text-white rounded-md cursor-pointer uppercase"
+            >
               Subscribe
             </button>
           </form>
-           {message && (
+          {message && (
             <p className="text-sm mt-2 text-center md:text-right text-gray-300">
               {message}
             </p>

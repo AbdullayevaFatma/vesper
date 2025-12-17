@@ -5,16 +5,18 @@ export default function Info() {
   return (
     <section className="bg-[#f5f1e8] py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-16 items-start mb-24">
+        <div className="flex flex-col lg:flex-row gap-16 items-start ">
           <div className="lg:w-1/3 space-y-6">
-            <h3 className="text-2xl uppercase tracking-[0.3em] text-primary-500font-bold">
+            <h3 className="text-3xl uppercase tracking-widest text-primary-500 font-bold">
               VESPER
             </h3>
             <h2 className="text-3xl font-light text-neutral-800 uppercase">
               Contemporary European
             </h2>
             <p className="text-neutral-600 leading-relaxed">
-            Renowned for its refined cuisine, Vesper blends confident flavors with a warm, softly lit atmosphere, offering a simple yet luxurious dining and bar experience in the heart of Milan.
+              Renowned for its refined cuisine, Vesper blends confident flavors
+              with a warm, softly lit atmosphere, offering a simple yet
+              luxurious dining and bar experience in the heart of Milan.
             </p>
             <Link
               href="/menu"
@@ -23,7 +25,7 @@ export default function Info() {
               VIEW MENU
               <span className="text-xl">→</span>
             </Link>
-            <Link href="/reservation">
+            <Link href="/contact">
               <button className="mt-8 border border-neutral-800 px-8 py-3 text-sm uppercase tracking-wider bg-neutral-800 text-white transition cursor-pointer">
                 CONTACT TO BOOK →
               </button>

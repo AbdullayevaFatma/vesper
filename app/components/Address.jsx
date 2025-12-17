@@ -14,7 +14,7 @@ export default function Address() {
   return (
     <section className="bg-[#f7f4ef] py-20 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="h-60 lg:h-90  overflow-hidden shadow-xl">
+        <div className="h-60 lg:h-96  overflow-hidden shadow-xl">
           <MapContainer
             center={[45.4642, 9.19]}
             zoom={15}

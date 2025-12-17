@@ -6,7 +6,7 @@ export const metadata = {
 
 export default function Menu() {
   return (
-    <section className="relative bg-neutral-900 text-gray-200 min-h-[60vh] lg:min-h-screen">
+    <section className="relative bg-neutral-900 text-gray-200 min-h-[80vh]">
       <div className="absolute inset-0">
         <img
           src="/interior.png" 
