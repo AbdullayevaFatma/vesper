@@ -1,9 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import { galleryItems } from "../data/data";
 
-
+export const metadata = {
+  title: "Gallery",
+  description: "Discover Vesper’s gallery in the heart of Milan."
+};
 
 export default function Gallery() {
   return (

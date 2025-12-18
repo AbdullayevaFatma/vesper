@@ -65,14 +65,14 @@ const ReservationSchema = new mongoose.Schema(
     }
   },
   {
-    timestamps: true // createdAt, updatedAt otomatik eklenir
+    timestamps: true 
   }
 );
 
-// Index'ler (performans için)
-ReservationSchema.index({ date: 1, status: 1 }); // Tarih bazlı sorgular için
-ReservationSchema.index({ email: 1 }); // Email bazlı sorgular için
-ReservationSchema.index({ date: 1, time: 1 }); // Tarih-saat bazlı sorgular için
+
+ReservationSchema.index({ date: 1, status: 1 });
+ReservationSchema.index({ email: 1 }); 
+ReservationSchema.index({ date: 1, time: 1 }); 
 
 export default mongoose.models.Reservation || 
   mongoose.model("Reservation", ReservationSchema);
