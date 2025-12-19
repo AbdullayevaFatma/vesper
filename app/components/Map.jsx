@@ -19,7 +19,10 @@ export default function Map() {
         scrollWheelZoom={false}
         className="h-full w-full"
       >
-        <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png" />
+        <TileLayer
+          url={`https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=${process.env.NEXT_PUBLIC_STADIA_API_KEY}`}
+        />
+
         <Marker position={[45.4642, 9.19]} icon={orangeIcon}>
           <Popup>
             <strong className="text-lg text-primary-500">Vesper</strong>
