@@ -1,4 +1,4 @@
-// app/contact/page.jsx
+
 import Address from "../components/Address";
 
 export const metadata = {
